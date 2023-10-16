@@ -13,8 +13,15 @@ class Member extends Model
     protected $table = 'member';
     protected $fillable = ['name', 'email'];
 
-    public function school() : HasManyThrough
+    public function schools() : HasManyThrough
     {
-        return $this->hasManyThrough(School::class);
+        return $this->hasManyThrough(
+            School::class,
+            MemberSchool::class,
+            'member_id',
+            'id',
+            null,
+            'school_id'
+        );
     }
 }

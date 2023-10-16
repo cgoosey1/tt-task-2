@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\School;
 use Illuminate\View\View;
 
@@ -15,6 +16,9 @@ class SchoolController extends Controller
      */
     public function show(School $school) : View
     {
-        return view('site.schools.show');
+        return view('site.schools.show', [
+            'school' => $school,
+            'members' => $school->members,
+        ]);
     }
 }

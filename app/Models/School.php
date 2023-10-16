@@ -20,6 +20,13 @@ class School extends Model
      */
     public function members() : HasManyThrough
     {
-        return $this->hasManyThrough(Member::class);
+        return $this->hasManyThrough(
+            Member::class,
+            MemberSchool::class,
+            'school_id',
+            'id',
+            null,
+            'member_id'
+        );
     }
 }

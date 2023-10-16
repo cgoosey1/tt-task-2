@@ -17,9 +17,14 @@ class SchoolFactory extends Factory
      */
     public function definition(): array
     {
+        // The faking library has a large amount of countries, and seeded
+        // data is better if schools have country cross over, so will use
+        // countries ToucanTech is based in.
+        $countries = ['United Kingdom', 'Portugal', 'Australia'];
+
         return [
             'name' => fake()->city(),
-            'country' => fake()->country(),
+            'country' => $countries[array_rand($countries)],
         ];
     }
 }

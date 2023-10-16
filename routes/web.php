@@ -15,6 +15,11 @@ use \App\Http\Controllers\SchoolController;
 |
 */
 
+// Redirect to schools index by default
+Route::get('/', function () {
+    return redirect()->route('schools.index');
+});
+
 Route::prefix('members')->group(function () {
     Route::get('/create', [MemberController::class, 'create'])
         ->name('members.create');

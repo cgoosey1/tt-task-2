@@ -21,4 +21,18 @@ class SchoolController extends Controller
             'members' => $school->members,
         ]);
     }
+
+    /**
+     * Show report on all schools and their members
+     *
+     * @return View
+     */
+    public function report() : View
+    {
+        $schools = School::withCount('members')->get();
+
+        return view('site.schools.report', [
+            'schools' => $schools,
+        ]);
+    }
 }

@@ -23,5 +23,9 @@ Route::prefix('members')->group(function () {
     Route::get('/csv', [MemberController::class, 'exportCSV'])
         ->name('members.csv');
 });
-Route::get('/schools/{school}', [SchoolController::class, 'show'])
-    ->name('schools.show');
+Route::prefix('schools')->group(function () {
+    Route::get('/report', [SchoolController::class, 'report'])
+        ->name('schools.report');
+    Route::get('/{school}', [SchoolController::class, 'show'])
+        ->name('schools.show');
+});

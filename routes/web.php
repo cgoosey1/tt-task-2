@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\MemberController;
+use \App\Http\Controllers\SchoolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    //
-});
+Route::get('/members/create', [MemberController::class, 'create']);
+Route::post('/members', [MemberController::class, 'store']);
+Route::get('/schools/{school}', [SchoolController::class, 'show']);

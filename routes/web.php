@@ -15,9 +15,13 @@ use \App\Http\Controllers\SchoolController;
 |
 */
 
-Route::get('/members/create', [MemberController::class, 'create'])
-    ->name('members.create');
-Route::post('/members', [MemberController::class, 'store'])
-    ->name('members.store');
+Route::prefix('members')->group(function () {
+    Route::get('/create', [MemberController::class, 'create'])
+        ->name('members.create');
+    Route::post('/', [MemberController::class, 'store'])
+        ->name('members.store');
+    Route::get('/csv', [MemberController::class, 'exportCSV'])
+        ->name('members.csv');
+});
 Route::get('/schools/{school}', [SchoolController::class, 'show'])
     ->name('schools.show');

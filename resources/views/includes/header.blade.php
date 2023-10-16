@@ -6,7 +6,19 @@
     </a>
 
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link {{ Request::routeIs('members.create') ? 'active' : '' }}" aria-current="page">Members</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link {{ Request::is('members/*') ? 'active' : '' }} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Members
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item  {{ Request::routeIs('members.create') ? 'active' : '' }}" href="/members/create">
+                    Create
+                </a></li>
+                <li><a class="dropdown-item  {{ Request::routeIs('members.csv') ? 'active' : '' }}" href="/members/csv">
+                    CSV
+                </a></li>
+            </ul>
+        </li>
         <li class="nav-item dropdown">
             <a class="nav-link {{ Request::routeIs('schools.show') ? 'active' : '' }} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Schools

@@ -20,10 +20,17 @@
             </ul>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link {{ Request::is('schools/*') ? 'active' : '' }} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link {{ Request::is('schools*') ? 'active' : '' }} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Schools
             </a>
             <ul class="dropdown-menu">
+                <li><a class="dropdown-item {{ Request::routeIs('schools.index') ? 'active' : '' }}" href="/schools/">
+                    Schools
+                </a></li>
+                <li><a class="dropdown-item {{ Request::routeIs('schools.report') ? 'active' : '' }}" href="/schools/report">
+                    School Members Report
+                </a></li>
+                <li><hr class="dropdown-divider"></li>
                 @foreach (\App\Models\School::all() as $schoolMenu)
                     <li>
                         @if (Request::routeIs('schools.show') && isset($school) && $school->id == $schoolMenu->id)
@@ -34,10 +41,6 @@
                         {{ $schoolMenu->name }}
                     </a></li>
                 @endforeach
-                <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item {{ Request::routeIs('schools.report') ? 'active' : '' }}" href="/schools/report">
-                        School Members Report
-                    </a></li>
             </ul>
         </li>
     </ul>

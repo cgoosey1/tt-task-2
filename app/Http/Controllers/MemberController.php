@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MemberPostRequest;
+use App\Models\School;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -16,7 +17,9 @@ class MemberController extends Controller
      */
     public function create() : View
     {
-        return view('site.members.create');
+        $schools = School::all();
+
+        return view('site.members.create', ['schools' => $schools]);
     }
 
     /**

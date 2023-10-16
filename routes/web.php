@@ -24,8 +24,12 @@ Route::prefix('members')->group(function () {
         ->name('members.csv');
 });
 Route::prefix('schools')->group(function () {
+    Route::get('/', [SchoolController::class, 'index'])
+        ->name('schools.index');
     Route::get('/report', [SchoolController::class, 'report'])
         ->name('schools.report');
+    Route::get('/search/{term}', [SchoolController::class, 'searchByCountry'])
+        ->name('schools.searchByCountry');
     Route::get('/{school}', [SchoolController::class, 'show'])
         ->name('schools.show');
 });

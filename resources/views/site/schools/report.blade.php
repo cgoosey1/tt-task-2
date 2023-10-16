@@ -5,7 +5,7 @@
     <div class="mb-3">
         <label for="countries" class="form-label">Showing members for countries</label>
         <select class="form-select" multiple name="countries[]" id="countries" required>
-            @foreach ($schools->pluck('country') as $country)
+            @foreach ($countries as $country)
                 <option selected>{{ $country }}</option>
             @endforeach
         </select>

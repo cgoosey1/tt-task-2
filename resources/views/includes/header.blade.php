@@ -20,7 +20,7 @@
             </ul>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link {{ Request::routeIs('schools.show') ? 'active' : '' }} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link {{ Request::is('schools/*') ? 'active' : '' }} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Schools
             </a>
             <ul class="dropdown-menu">
@@ -34,6 +34,10 @@
                         {{ $schoolMenu->name }}
                     </a></li>
                 @endforeach
+                <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item {{ Request::routeIs('schools.report') ? 'active' : '' }}" href="/schools/report">
+                        School Members Report
+                    </a></li>
             </ul>
         </li>
     </ul>

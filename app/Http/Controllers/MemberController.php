@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MemberPostRequest;
+use App\Models\Member;
+use App\Models\MemberSchool;
 use App\Models\School;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -30,6 +32,16 @@ class MemberController extends Controller
      */
     public function store(MemberPostRequest $request) : RedirectResponse
     {
-        //
+        $member = Member::create($request->safe()->only(['name', 'email']));
+
+        foreach ($request->schools as $school) {
+            MemberSchool::create([
+                'member_id' => $member->id,
+                'school_id' => $school,
+            ]);
+        }
+
+        return redirect()->route('members.create')
+            ->with('success', 'Successfully created new member.');
     }
 }

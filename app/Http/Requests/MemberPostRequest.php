@@ -16,6 +16,8 @@ class MemberPostRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
+            'schools' => 'required',
+            'schools.*' => 'exists:school,id'
         ];
     }
 }

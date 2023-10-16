@@ -15,6 +15,9 @@ use \App\Http\Controllers\SchoolController;
 |
 */
 
-Route::get('/members/create', [MemberController::class, 'create']);
-Route::post('/members', [MemberController::class, 'store']);
-Route::get('/schools/{school}', [SchoolController::class, 'show']);
+Route::get('/members/create', [MemberController::class, 'create'])
+    ->name('members.create');
+Route::post('/members', [MemberController::class, 'store'])
+    ->name('members.store');
+Route::get('/schools/{school}', [SchoolController::class, 'show'])
+    ->name('schools.show');

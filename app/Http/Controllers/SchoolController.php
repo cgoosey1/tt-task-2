@@ -15,6 +15,6 @@ class SchoolController extends Controller
      */
     public function show(School $school) : View
     {
-        //
+        return view('site.schools.show');
     }
 }

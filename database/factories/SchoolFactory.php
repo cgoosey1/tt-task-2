@@ -19,6 +19,7 @@ class SchoolFactory extends Factory
     {
         return [
             'name' => fake()->city(),
+            'country' => fake()->country(),
         ];
     }
 }
